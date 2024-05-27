@@ -11,6 +11,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         // Erlaubt CORS-Anfragen für alle Endpunkte von der Domain, auf der dein Vue.js-Client läuft
-        registry.addMapping("/**").allowedOrigins("http://localhost:8080", "https://dnlhng-frontend.onrender.com");
+        registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:8080", "https://dnlhng-frontend.onrender.com");
     }
 }
