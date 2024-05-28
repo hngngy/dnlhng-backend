@@ -1,6 +1,5 @@
 package dnlhng.webtech.dnlhng.web;
 
-import dnlhng.webtech.dnlhng.web.api.Benutzer;
 import dnlhng.webtech.dnlhng.web.api.Post;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
