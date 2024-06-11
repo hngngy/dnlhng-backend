@@ -1,11 +1,17 @@
 package dnlhng.webtech.dnlhng.web.api;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String username;
     private String message;
 
+    public Post(){}
 
     public Post(long id, String username, String message){
         this.id = id;

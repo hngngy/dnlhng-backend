@@ -1,23 +1,26 @@
 package dnlhng.webtech.dnlhng.web;
 
 import dnlhng.webtech.dnlhng.web.api.Post;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import dnlhng.webtech.dnlhng.web.api.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.*;
 
 @RestController
 public class PostController {
 
-    private List<Post> posts;
+    @Autowired
+    PostService service;
 
-    public PostController(){
-        posts = new ArrayList<>();
-        posts.add(new Post(1, "Hoang", "hallo"));
+    @PostMapping("/posts")
+    public Post createPost(@RequestBody Post post){
+        return service.save(post);
     }
 
-    @GetMapping(path = "/posts")
-    public ResponseEntity<List<Post>> fetchPosts() {
-        return ResponseEntity.ok(posts);
+    @GetMapping("/posts/{id}")
+    public Post getPost(@PathVariable String id){
+        Long postId = Long.parseLong(id);
+        return service.get(postId);
     }
 }
