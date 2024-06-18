@@ -26,7 +26,7 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Post> getHero(@PathVariable("id") final Long id) {
+    public ResponseEntity<Post> getPost(@PathVariable("id") final Long id) {
         final Optional<Post> found = postService.getPost(id);
         return found.isPresent() ? ResponseEntity.ok(found.get()) : ResponseEntity.notFound().build();
     }
