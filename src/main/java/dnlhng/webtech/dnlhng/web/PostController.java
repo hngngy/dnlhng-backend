@@ -38,4 +38,9 @@ public class PostController {
         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deletePost(@PathVariable("id") final Long id) {
+        return postService.removePost(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
+
 }

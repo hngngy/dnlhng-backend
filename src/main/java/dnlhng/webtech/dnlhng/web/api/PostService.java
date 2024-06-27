@@ -28,4 +28,10 @@ public class PostService {
     public Post get(Long id){
         return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
+
+    public boolean removePost(final Long id) {
+        final boolean exists = repo.existsById(id);
+        if (exists) repo.deleteById(id);
+        return exists;
+    }
 }
