@@ -4,7 +4,6 @@ import dnlhng.webtech.dnlhng.web.api.Post;
 import dnlhng.webtech.dnlhng.web.api.PostService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +32,7 @@ public class PostController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Post> addPost(@Valid @RequestBody Post body) {
-        final Post post = new Post(body.getId(), body.getUsername(), body.getMessage());
+        final Post post = new Post(body.getUsername(), body.getMessage());
         final Post createdPost = postService.addPost(post);
         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
     }

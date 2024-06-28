@@ -13,8 +13,7 @@ public class Post {
 
     public Post(){}
 
-    public Post(long id, String username, String message){
-        this.id = id;
+    public Post(String username, String message){
         this.username = username;
         this.message = message;
     }
