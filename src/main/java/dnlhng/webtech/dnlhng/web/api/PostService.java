@@ -34,4 +34,10 @@ public class PostService {
         if (exists) repo.deleteById(id);
         return exists;
     }
+
+    public Post editPost(final Post post) {
+        return repo.existsById(post.getId())
+                ? repo.save(post)
+                : null;
+    }
 }

@@ -42,4 +42,12 @@ public class PostController {
         return postService.removePost(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Post> updatePost(@PathVariable("id") final Long id, @RequestBody Post body) {
+        body.setId(id);
+        final Post updatedPost = postService.editPost(body);
+        if (updatedPost == null) return ResponseEntity.notFound().build();
+        else return ResponseEntity.ok(updatedPost);
+    }
+
 }
